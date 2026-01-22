@@ -1,0 +1,404 @@
+/* Quests Page Specific Styles */
+
+/* Main Layout */
+.app-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.quest-main {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-right: 10px;
+    /* avoid scrollbar overlapping content too much */
+}
+
+.quest-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* overflow-y: scroll; Removed to let parent scroll */
+}
+
+.quest-box {
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    margin-top: 20px;
+    position: relative;
+}
+
+/* Quest Header */
+.quest-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.quest-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.quest-rank {
+    background: rgba(0, 243, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.quest-type {
+    color: var(--accent-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.quest-title {
+    font-size: 2.5rem;
+    background: var(--text-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+/* Quest Body */
+.quest-description {
+    margin-bottom: 30px;
+}
+
+.quest-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    opacity: 0.9;
+}
+
+.quest-objectives {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 30px;
+}
+
+.section-title {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.objective-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.objective-item:last-child {
+    margin-bottom: 0;
+}
+
+.checkbox-box {
+    min-width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-checked {
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.checkbox-unchecked {
+    border: 2px solid var(--text-muted);
+}
+
+.objective-text {
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.objective-done {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Rewards */
+.quest-rewards-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.reward-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.reward-gold {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.reward-gold-text {
+    font-weight: 600;
+    color: #ffd700;
+}
+
+.reward-xp {
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.reward-xp-text {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.reward-item {
+    background: rgba(255, 0, 85, 0.1);
+    border: 1px solid rgba(255, 0, 85, 0.2);
+}
+
+.reward-item-text {
+    font-weight: 600;
+    color: var(--accent-secondary);
+}
+
+/* Footer */
+.quest-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-abandon {
+    padding: 12px 25px;
+}
+
+.btn-complete {
+    padding: 12px 40px;
+    font-size: 1rem;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+}
+
+.quest-utility {
+    width: 100%;
+    padding: 40px;
+    margin: 20px 20px 20px 0;
+    position: sticky;
+    max-height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.quest-add-terminal {
+    position: absolute;
+    /* position-anchor: top right; */
+    /* border: solid 12px; */
+    /* transform: translate(50%, 50%); */
+    top: 100px;
+    right: 20px;
+    z-index: 1000;
+    width: 100%;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 800px;
+    padding: 40px;
+    margin-top: 20px;
+    overflow-y: auto;
+
+}
+
+.quest-add-terminal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quest-add-terminal-body input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--text-muted);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-main);
+    margin-top: 10px;
+}
+
+.quest-add-terminal-body * {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.quest-add-terminal-body select {
+    width: 100%;
+    padding: 10px;
+    padding-right: 30px;
+    /* Make space for arrow */
+    border-radius: 8px;
+    border: 1px solid var(--text-muted);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-main);
+    margin-top: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.quest-add-terminal-body select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+.quest-add-terminal-body select option {
+    background-color: #0F0F14;
+    color: var(--text-main);
+}
+
+.quest-add-terminal-body button {
+    width: 100%;
+    padding: 10px;
+    max-height: fit-content;
+    border-radius: 8px;
+    border: 1px solid var(--text-muted);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-main);
+    margin-top: 10px;
+}
+
+.quest-add-terminal-body textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--text-muted);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text-main);
+    margin-top: 10px;
+}
+
+.quest-add-terminal-body button:hover {
+    background: rgba(0, 243, 255, 0.2);
+    color: var(--text-main);
+    margin-top: 10px;
+}
+
+.quest-add-terminal-body h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.quest-add-terminal-body label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width: 100%;
+    gap: 10px;
+    padding-bottom: 5px;
+}
+
+.select-container>div,
+.select-container>.objective-input {
+    flex-shrink: 0;
+    /* STOP shrinking. Keep your natural size. */
+}
+
+.difficulty-slider {
+    /* display: flex; */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 10px;
+    padding-bottom: 5px;
+}
+
+.difficulty-slider input {
+    flex-shrink: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    outline: none;
+    padding: 0;
+    border: none;
+}
+
+.difficulty-slider input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.difficulty-slider input::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px var(--accent-color);
+}

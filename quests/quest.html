@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekai Terminal | Quests</title>
+    <!-- Importing a nice font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="quests.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="glass-panel glass-sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-dragon"></i> SYSTEM
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item" onclick="window.location.href='../index.html'">
+                    <i class="fa-solid fa-layer-group"></i> <span>Status</span>
+                </li>
+                <li class="nav-item" onclick="window.location.href='../skills/skills.html'">
+                    <i class="fa-solid fa-network-wired"></i> <span>Skill Tree</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-box-open"></i> <span>Inventory</span>
+                </li>
+                <li class="nav-item active">
+                    <i class="fa-solid fa-scroll"></i> <span>Quests</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-gear"></i> <span>Settings</span>
+                </li>
+            </ul>
+            <div class="theme-toggle-container">
+                <button class="theme-btn active" onclick="setTheme('dark')">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="theme-btn" onclick="setTheme('light')">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        
+        <main class="quest-main">
+            <div class="glass-panel quest-utility">
+                <div class="quest-search">
+                    <input type="text" placeholder="Search quests...">
+                </div>
+                <div class="add-quest">
+                    <button class="btn btn-glass btn-add-quest"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="glass-panel quest-add-terminal">
+                <div class="quest-add-terminal-header" style="display: flex; justify-content: space-between; align-items: center; gap: 15px;">
+                    <h2>Add Quest</h2>
+                    <button class="btn btn-glass btn-close-quest"><i class="fa-solid fa-times"></i></button>
+                </div>
+                <div class="quest-add-terminal-body">
+                    <form class="quest-add-terminal-form">
+                        <label for="quest-title">Quest Title</label>
+                        <input type="text" id="quest-title" placeholder="Enter quest title">
+                        <label for="quest-description">Quest Description</label>
+                        <textarea id="quest-description" placeholder="Enter quest description"></textarea>
+                        <label for="quest-stats">Quest Stats</label>
+                        <div class="select-container objectives-select">
+                            <div class="objective-input">
+                                <input type="text" id="quest-objectives" placeholder="Enter quest objectives">
+                                <button type="button" class="btn btn-glass btn-add-objective" onclick="addObjective()">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="select-container stats-select">
+                            <div class="objective-input"> <select id="quest-stats">
+                                    <option value="">Select a Stat...</option>
+                                    </select>
+                                
+                                <button type="button" class="btn btn-glass btn-add-objective" onclick="addStat()">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="difficulty-slider">
+                            <label for="quest-difficulty">Quest Difficulty</label>
+                            <input type="range" id="quest-difficulty" min="1" max="10" value="2">
+                            <span id="quest-difficulty-value"><script>
+                                document.getElementById('quest-difficulty').oninput = function() {
+                                    document.getElementById('quest-difficulty-value').innerHTML = this.value;
+                                };
+                            </script></span>
+                        </div>
+                        <label for="quest-rewards">Quest Rewards</label>
+                        <div class="select-container rewards-select">
+                            <select type="dropdown" id="quest-rewards" placeholder="Enter quest rewards">
+                                <option value="">Select a reward</option>
+                                <option value="">Health</option>
+                                <option value="">Mana</option>
+                                <option value="">Stamina</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-glass btn-add-quest">Add Quest</button>
+                    </form>
+                </div>
+            </div>
+            <div class="quest-container">
+                <!-- Quest Box -->
+                <div class="glass-panel quest-box">
+                    
+                <!-- Header -->
+                <div class="quest-header">
+                    <div>
+                        <div class="quest-meta">
+                            <span class="quest-rank">RANK F</span>
+                            <!-- <span class="quest-type"><i class="fa-solid fa-circle-exclamation"></i> Main Scenario</span> -->
+                        </div>
+                        <h1 class="quest-title">Title</h1>
+                    </div>
+                </div>
+
+                <!-- Body -->
+                <div class="quest-body">
+                    <div class="quest-description">
+                        <p class="quest-text">
+                            Description
+                        </p>
+                    </div>
+
+                    <div class="quest-objectives">
+                        <h3 class="section-title">Current Objectives</h3>
+                        <div class="objective-item">
+                            <input type="checkbox" name="objective" id="objective">
+                            <label for="objective"><span class="objective-text">Initialize System Boot Sequence</span></label>
+                        </div>
+                        <div class="objective-item">
+                            <input type="checkbox" name="objective" id="objective">
+                            <label for="objective"><span class="objective-text">Visit the Skill Tree and Unlock a Node</span></label>
+                        </div>
+                    </div>
+
+                    <!-- Rewards -->
+                    <div class="quest-rewards">
+                        <h3 class="section-title">Rewards</h3>
+                        <div class="quest-rewards-list">
+                            <div class="reward-pill reward-xp">
+                                <i class="fa-solid fa-star" style="color: var(--accent-color);"></i>
+                                <span class="reward-xp-text">1500 XP</span>
+                            </div>
+                            <div class="reward-pill reward-skill">
+                                <i class="fa-solid fa-circle-plus" style="color: var(--accent-secondary);"></i>
+                                <span class="reward-skill-text">+1 Strength Point</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Actions -->
+                <div class="quest-footer">
+                    <button class="btn btn-glass btn-abandon">Abandon</button>
+                    <button class="btn btn-primary btn-complete">Complete Quest</button>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="../quests/quest.js"></script>
+</body>
+</html>

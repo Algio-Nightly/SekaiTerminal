@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekai Terminal | System v2.0</title>
+    <!-- Importing a nice font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons (CDN for starter pack) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="glass-panel glass-sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-dragon"></i> SEKAI TERMINAL
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active">
+                    <i class="fa-solid fa-layer-group"></i> <span>Status</span>
+                </li>
+                <li class="nav-item skill_tree">
+                    <i class="fa-solid fa-network-wired"></i> <span>Skill Tree</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-box-open"></i> <span>Inventory</span>
+                </li>
+                <li class="nav-item" onclick="window.location.href='quests/quest.html'">
+                    <i class="fa-solid fa-scroll"></i> <span>Quests</span>
+                </li>
+                <li class="nav-item">
+                    <i class="fa-solid fa-gear"></i> <span>Settings</span>
+                </li>
+            </ul>
+            <div class="theme-toggle-container">
+                <button class="theme-btn active" onclick="setTheme('dark')">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="theme-btn" onclick="setTheme('light')">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Top Stats Row -->
+            <div class="stats-grid">
+                <!-- Card 1: Strength -->
+                <div class="glass-panel stat-card accent-red">
+                    <div class="stat-title">
+                        <span>Strength</span> <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+                    <div class="stat-value">84 <span style="font-size: 0.5em; opacity: 0.7;">A-Rank</span></div>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar" style="width: 84%"></div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Intelligence -->
+                <div class="glass-panel stat-card accent-blue">
+                    <div class="stat-title">
+                        <span>Intelligence</span> <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div class="stat-value">142 <span style="font-size: 0.5em; opacity: 0.7;">S-Rank</span></div>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Agility -->
+                <div class="glass-panel stat-card accent-gold">
+                    <div class="stat-title">
+                        <span>Agility</span> <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <div class="stat-value">67 <span style="font-size: 0.5em; opacity: 0.7;">B-Rank</span></div>
+                    <div class="stat-bar-container">
+                        <div class="stat-bar" style="width: 67%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                
+                <!-- Main Chart / Activity Area -->
+                <div class="glass-panel chart-container">
+                    <h2 class="panel-title">Experience Gain</h2>
+                    <div style="flex: 1; display: flex; align-items: flex-end; justify-content: space-around; gap: 8px; padding-top: 20px;">
+                        <!-- Mock Chart Bars -->
+                        <div class="glass-panel" style="width: 40px; height: 30%; background: var(--accent-color); opacity: 0.5;"></div>
+                        <div class="glass-panel" style="width: 40px; height: 50%; background: var(--accent-color); opacity: 0.6;"></div>
+                        <div class="glass-panel" style="width: 40px; height: 40%; background: var(--accent-color); opacity: 0.5;"></div>
+                        <div class="glass-panel" style="width: 40px; height: 70%; background: var(--accent-color); opacity: 0.8;"></div>
+                        <div class="glass-panel" style="width: 40px; height: 60%; background: var(--accent-color); opacity: 0.7;"></div>
+                        <div class="glass-panel" style="width: 40px; height: 85%; background: var(--accent-color); opacity: 0.9;"></div>
+                        <div class="glass-panel" style="width: 40px; height: 75%; background: var(--accent-color); opacity: 0.8;"></div>
+                    </div>
+                    <div style="margin-top: 10px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
+                        Current Trend: <span style="color: var(--accent-color)">+15%</span> this week
+                    </div>
+                </div>
+
+                <!-- Active Quests / Side List -->
+                <div class="glass-panel list-container">
+                    <h2 class="panel-title">Active Quests</h2>
+                    
+                    <div class="list-item">
+                        <div class="list-item-icon" style="color: #ff0055;">
+                            <i class="fa-solid fa-skull"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h4>Defeat the Bug Lord</h4>
+                            <p>Fix critical issues in production</p>
+                        </div>
+                        <button class="btn btn-glass" style="padding: 5px 10px; font-size: 0.7rem;">Active</button>
+                    </div>
+
+                    <div class="list-item">
+                        <div class="list-item-icon" style="color: #ebd234;">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h4>Knowledge Absorption</h4>
+                            <p>Read 3 chapters of "Clean Code"</p>
+                        </div>
+                        <button class="btn btn-glass" style="padding: 5px 10px; font-size: 0.7rem;">Active</button>
+                    </div>
+
+                     <div class="list-item">
+                        <div class="list-item-icon" style="color: #00f3ff;">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <div class="list-item-content">
+                            <h4>Daily Maintenance</h4>
+                            <p>Drink 2L of water</p>
+                        </div>
+                         <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.7rem;">Done</button>
+                    </div>
+                    
+                    <div style="margin-top: auto; padding-top: 15px;">
+                        <button class="btn btn-glass" style="width: 100%;">View All Quests</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
