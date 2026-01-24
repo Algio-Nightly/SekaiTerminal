@@ -17,6 +17,7 @@
     
     <!-- Vis.js for Graph (Assuming it's needed based on context) -->
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <link rel="stylesheet" href="skills.css">
 </head>
 <body>
 
@@ -33,13 +34,13 @@
                 <li class="nav-item active" onclick="window.location.href='../../skills/skills.html'">
                     <i class="fa-solid fa-network-wired"></i> <span>Skill Tree</span>
                 </li>
-                <li class="nav-item" onclick="window.location.href='../../inventory/inventory.html'">
+                <li class="nav-item" onclick="window.location.href='../inventory/inventory.html'">
                     <i class="fa-solid fa-box-open"></i> <span>Inventory</span>
                 </li>
                 <li class="nav-item" onclick="window.location.href='../../quests/quest.html'">
                     <i class="fa-solid fa-scroll"></i> <span>Quests</span>
                 </li>
-                <li class="nav-item" onclick="window.location.href='../../settings/settings.html'">
+                <li class="nav-item" onclick="window.location.href='../settings/settings.html'">
                     <i class="fa-solid fa-gear"></i> <span>Settings</span>
                 </li>
             </ul>
@@ -52,27 +53,35 @@
                 </button>
             </div>
         </nav>
-
+        
         <!-- Main Content -->
         <main class="main-content">
             <!-- Wrapper for Graph and UI -->
-            <div style="position: relative; flex: 1; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); background: rgba(7, 7, 7, 0.31); overflow: hidden;">
+            <!-- Wrapper for Graph and UI -->
+            <div class="skill-graph-wrapper">
                 <!-- Graph Container -->
-                <div id="mynetwork" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+                <div id="mynetwork" class="skill-graph-container"></div>
 
                 <!-- UI Overlay (Restoring original layout) -->
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; display: flex; flex-direction: column; padding: var(--spacing-md); gap: var(--spacing-md);">
+                <div class="skill-ui-overlay">
+    
+                        <div class="glass-button open-panel" id="add-skill-panel-open">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
                     
                     <!-- Skill Panel 1 (Control) -->
-                    <div class="glass-panel" id="skill-panel-1" style="pointer-events: auto; width: 20%; height: 40%; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 6px;">
-                        <h2 class="panel-title" style="margin: var(--spacing-md); text-align: center;">Skill Panel</h2>
-                        <button class="btn glass-button" id="addSkillBtn" style="background: var(--glass-bg); width: 100%;">Add Skill</button>
+                    <div class="glass-panel hidden skill-control-panel" id="skill-panel-1">
+                        <h2 class="panel-title panel-title-centered">Skill ToolBar</h2>
+                        <button class="btn glass-button btn-full-width" id="addSkillBtn">Add Skill</button>
+                        <span>Selected Skill: <span id="selected-skill">None</span></span>
+                        <button class="btn glass-button btn-full-width" id="removeSkillBtn">Remove Skill</button>
                     </div>
 
                     <!-- Add Skill Panel (Visible Form) -->
-                    <div class="glass-panel hidden" id="add-skill-panel" style="pointer-events: auto; width: 20%; height: 40%; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); padding: 20px; display: flex; flex-direction: column; gap: 10px;">
-                        <h2 class="panel-title" style="text-align: center; margin-bottom: 5px;">Add Skill</h2>
-                        <input type="text" id="new-skill-input" placeholder="Skill Name" class="glass-input" style="padding: 8px; border-radius: 4px; border: 1px solid var(--glass-border); background: var(--glass-bg); color: white;">
+
+                    <div class="glass-panel hidden skill-add-panel" id="add-skill-panel">
+                        <h2 class="panel-title panel-title-centered-sm">Add Skill</h2>
+                        <input type="text" id="new-skill-input" placeholder="Skill Name" class="glass-input skill-input">
                         <button id="create-skill-btn" class="btn btn-primary">Create</button>
                     </div>
 

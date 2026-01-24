@@ -32,7 +32,7 @@
     --spacing-md: 24px;
     --spacing-lg: 32px;
     --sidebar-width: 250px;
-    --background-image: url('assets/background/su-san-lee-E_eWwM29wfU-unsplash (1).jpg');
+    --background-image: url('assets/background/su-san-lee-E_eWwM29wfU-unsplash\ \(1\).jpg');
 }
 
 
@@ -479,4 +479,450 @@ h2.panel-title {
 .popup-icon {
     color: var(--accent-color);
     font-size: 1.2rem;
+}
+
+/* --- Stat Sub Info --- */
+.stat-sub-info {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.stat-sub-info span {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+/* --- New Dashboard Restructure --- */
+
+/* Level Overview */
+.level-overview {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+}
+
+.level-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    width: 100%;
+}
+
+.level-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+.lvl-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.lvl-num {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(to bottom, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.xp-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.xp-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.xp-val {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.xp-bar-bg {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
+    width: 0%;
+    border-radius: 6px;
+    box-shadow: 0 0 10px var(--accent-color);
+    transition: width 1s ease-in-out;
+}
+
+/* Dashboard Grid Adjustments */
+.center-col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    /* Flexbox fix */
+    gap: var(--spacing-md);
+    flex: 2;
+    /* Take up more space */
+}
+
+.list-container {
+    flex: 1;
+}
+
+.skills-panel {
+    padding: var(--spacing-md);
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.skill-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s;
+}
+
+.skill-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.skill-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+}
+
+.skill-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.skill-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.skill-val {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.skill-sp-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.skill-sp-bar-fill {
+    height: 100%;
+    background: var(--text-muted);
+    /* Default for neutral skills */
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.skill-sub {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+.skill-sub span {
+    color: var(--accent-color);
+}
+
+/* Accents for bars/icons */
+.accent-red {
+    color: var(--accent-secondary) !important;
+}
+
+.accent-red-bg {
+    background: var(--accent-secondary) !important;
+}
+
+.accent-blue {
+    color: var(--accent-color) !important;
+}
+
+.accent-blue-bg {
+    background: var(--accent-color) !important;
+}
+
+.accent-gold {
+    color: var(--accent-tertiary) !important;
+}
+
+.accent-gold-bg {
+    background: var(--accent-tertiary) !important;
+}
+
+/* --- Chart Fix --- */
+.chart-bar {
+    width: 12%;
+    background: var(--accent-color);
+    border-radius: 4px 4px 0 0;
+    opacity: 0.7;
+    transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.chart-bar:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(--accent-color));
+}
+
+/* --- Detailed Line Chart --- */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.chart-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sync-badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 5px var(--accent-color);
+        box-shadow: 0 0 5px rgba(0, 243, 255, 0.2);
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.chart-body {
+    display: flex;
+    padding: 20px;
+    gap: 15px;
+    height: 300px;
+    /* Fixed height for the graph area */
+    align-items: stretch;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    /* Alignment fix for X-axis spacing */
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: monospace;
+    text-align: right;
+    min-width: 30px;
+}
+
+.graph-area {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-lines {
+    position: absolute;
+    top: 5px;
+    /* Offset to align with Y-axis text centers */
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    /* Leave space for X-axis */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.grid-line {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.main-chart-svg {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 30px);
+    z-index: 2;
+    overflow: visible;
+}
+
+.chart-dot {
+    fill: #fff;
+    stroke: var(--accent-color);
+    stroke-width: 2px;
+    transition: r 0.3s ease;
+}
+
+.chart-dot:hover {
+    r: 8px;
+    cursor: pointer;
+}
+
+.x-axis {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: monospace;
+}
+
+.x-axis span {
+    position: absolute;
+    top: 10px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+/* Uniformly center all labels on their data points */
+.x-axis span {
+    transform: translateX(-50%) !important;
+    /* Force override of any specific rules if specificity issues, though n-th child below just sets LEFT */
+}
+
+/* Specific positions */
+.x-axis span:nth-child(1) {
+    left: 0%;
+}
+
+.x-axis span:nth-child(2) {
+    left: 16.666%;
+}
+
+.x-axis span:nth-child(3) {
+    left: 33.333%;
+}
+
+.x-axis span:nth-child(4) {
+    left: 50%;
+}
+
+.x-axis span:nth-child(5) {
+    left: 66.666%;
+}
+
+.x-axis span:nth-child(6) {
+    left: 83.333%;
+}
+
+.x-axis span:nth-child(7) {
+    left: 100%;
+}
+
+/* --- Programmable Chart Styles --- */
+.chart-stop-top {
+    stop-color: var(--accent-color);
+    stop-opacity: 0.2;
+    transition: stop-color 0.3s;
+}
+
+.chart-stop-bottom {
+    stop-color: var(--accent-color);
+    stop-opacity: 0;
+    transition: stop-color 0.3s;
+}
+
+.chart-area {
+    /* fill is set to url(#chartFill) in HTML because linking IDs in external CSS is tricky/inconsistent across shadow DOMs etc, but properties on the gradient stops work fine. */
+    transition: fill 0.3s;
+}
+
+.chart-line {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 3;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 4px var(--accent-color));
+    /* Added glow */
+    transition: stroke 0.3s, filter 0.3s;
+}
+
+.chart-line:hover {
+    stroke-width: 4;
+    filter: drop-shadow(0 0 8px var(--accent-color));
 }

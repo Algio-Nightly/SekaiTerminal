@@ -27,13 +27,13 @@
                 <li class="nav-item skill_tree">
                     <i class="fa-solid fa-network-wired"></i> <span>Skill Tree</span>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" onclick="window.location.href='inventory/inventory.html'">
                     <i class="fa-solid fa-box-open"></i> <span>Inventory</span>
                 </li>
                 <li class="nav-item" onclick="window.location.href='quests/quest.html'">
                     <i class="fa-solid fa-scroll"></i> <span>Quests</span>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" onclick="window.location.href='settings/settings.html'">
                     <i class="fa-solid fa-gear"></i> <span>Settings</span>
                 </li>
             </ul>
@@ -51,37 +51,21 @@
         <main class="main-content">
             
             <!-- Top Stats Row -->
-            <div class="stats-grid">
-                <!-- Card 1: Strength -->
-                <div class="glass-panel stat-card accent-red">
-                    <div class="stat-title">
-                        <span>Strength</span> <i class="fa-solid fa-dumbbell"></i>
+            <!-- Level Overview Block -->
+            <div class="glass-panel level-overview">
+                <div class="level-info">
+                    <div class="level-circle">
+                        <span class="lvl-label">LVL</span>
+                        <span class="lvl-num" id="level">1</span>
                     </div>
-                    <div class="stat-value">84 <span style="font-size: 0.5em; opacity: 0.7;">A-Rank</span></div>
-                    <div class="stat-bar-container">
-                        <div class="stat-bar" style="width: 84%"></div>
-                    </div>
-                </div>
-
-                <!-- Card 2: Intelligence -->
-                <div class="glass-panel stat-card accent-blue">
-                    <div class="stat-title">
-                        <span>Intelligence</span> <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <div class="stat-value">142 <span style="font-size: 0.5em; opacity: 0.7;">S-Rank</span></div>
-                    <div class="stat-bar-container">
-                        <div class="stat-bar" style="width: 95%"></div>
-                    </div>
-                </div>
-
-                <!-- Card 3: Agility -->
-                <div class="glass-panel stat-card accent-gold">
-                    <div class="stat-title">
-                        <span>Agility</span> <i class="fa-solid fa-wind"></i>
-                    </div>
-                    <div class="stat-value">67 <span style="font-size: 0.5em; opacity: 0.7;">B-Rank</span></div>
-                    <div class="stat-bar-container">
-                        <div class="stat-bar" style="width: 67%"></div>
+                    <div class="xp-container">
+                        <div class="xp-info">
+                            <span>Experience</span>
+                            <span class="xp-val"><span id="xp">0</span> XP</span>
+                        </div>
+                        <div class="xp-bar-bg">
+                            <div class="xp-bar-fill" id="xp-bar-fill" style="width: 0%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,22 +73,178 @@
             <!-- Dashboard Grid -->
             <div class="dashboard-grid">
                 
-                <!-- Main Chart / Activity Area -->
-                <div class="glass-panel chart-container">
-                    <h2 class="panel-title">Experience Gain</h2>
-                    <div style="flex: 1; display: flex; align-items: flex-end; justify-content: space-around; gap: 8px; padding-top: 20px;">
-                        <!-- Mock Chart Bars -->
-                        <div class="glass-panel" style="width: 40px; height: 30%; background: var(--accent-color); opacity: 0.5;"></div>
-                        <div class="glass-panel" style="width: 40px; height: 50%; background: var(--accent-color); opacity: 0.6;"></div>
-                        <div class="glass-panel" style="width: 40px; height: 40%; background: var(--accent-color); opacity: 0.5;"></div>
-                        <div class="glass-panel" style="width: 40px; height: 70%; background: var(--accent-color); opacity: 0.8;"></div>
-                        <div class="glass-panel" style="width: 40px; height: 60%; background: var(--accent-color); opacity: 0.7;"></div>
-                        <div class="glass-panel" style="width: 40px; height: 85%; background: var(--accent-color); opacity: 0.9;"></div>
-                        <div class="glass-panel" style="width: 40px; height: 75%; background: var(--accent-color); opacity: 0.8;"></div>
+                <!-- Center Column: Skills & Chart -->
+                <div class="center-col">
+                    
+                    <!-- Skills Panel -->
+                    <div class="glass-panel skills-panel">
+                        <h2 class="panel-title">Attributes & Skill Points</h2>
+                        <div class="skills-list">
+                            
+                            <!-- Health -->
+                            <div class="skill-row">
+                                <div class="skill-icon accent-red"><i class="fa-solid fa-heart"></i></div>
+                                <div class="skill-details">
+                                    <div class="skill-top">
+                                        <span class="skill-name">Health</span>
+                                        <span class="skill-val" id="health">100</span>
+                                    </div>
+                                    <div class="skill-sp-bar-bg">
+                                        <div class="skill-sp-bar-fill accent-red-bg" id="bar-sp-health" style="width: 0%"></div>
+                                    </div>
+                                    <div class="skill-sub">SP: <span id="sp-health">0</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Mana -->
+                            <div class="skill-row">
+                                <div class="skill-icon accent-blue"><i class="fa-solid fa-bolt"></i></div>
+                                <div class="skill-details">
+                                    <div class="skill-top">
+                                        <span class="skill-name">Mana</span>
+                                        <span class="skill-val" id="mana">100</span>
+                                    </div>
+                                    <div class="skill-sp-bar-bg">
+                                        <div class="skill-sp-bar-fill accent-blue-bg" id="bar-sp-mana" style="width: 0%"></div>
+                                    </div>
+                                    <div class="skill-sub">SP: <span id="sp-mana">0</span></div>
+                                </div>
+                            </div>
+
+                             <!-- Stamina -->
+                            <div class="skill-row">
+                                <div class="skill-icon accent-gold"><i class="fa-solid fa-person-running"></i></div>
+                                <div class="skill-details">
+                                    <div class="skill-top">
+                                        <span class="skill-name">Stamina</span>
+                                        <span class="skill-val" id="stamina">100</span>
+                                    </div>
+                                    <div class="skill-sp-bar-bg">
+                                        <div class="skill-sp-bar-fill accent-gold-bg" id="bar-sp-stamina" style="width: 0%"></div>
+                                    </div>
+                                    <div class="skill-sub">SP: <span id="sp-stamina">0</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Strength -->
+                            <div class="skill-row">
+                                <div class="skill-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                                <div class="skill-details">
+                                    <div class="skill-top">
+                                        <span class="skill-name">Strength</span>
+                                        <span class="skill-val" id="strength">10</span>
+                                    </div>
+                                    <div class="skill-sp-bar-bg">
+                                        <div class="skill-sp-bar-fill" id="bar-sp-strength" style="width: 0%"></div>
+                                    </div>
+                                    <div class="skill-sub">SP: <span id="sp-strength">0</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Agility -->
+                            <div class="skill-row">
+                                <div class="skill-icon"><i class="fa-solid fa-wind"></i></div>
+                                <div class="skill-details">
+                                    <div class="skill-top">
+                                        <span class="skill-name">Agility</span>
+                                        <span class="skill-val" id="agility">10</span>
+                                    </div>
+                                    <div class="skill-sp-bar-bg">
+                                        <div class="skill-sp-bar-fill" id="bar-sp-agility" style="width: 0%"></div>
+                                    </div>
+                                    <div class="skill-sub">SP: <span id="sp-agility">0</span></div>
+                                </div>
+                            </div>
+
+                            <!-- Intelligence -->
+                            <div class="skill-row">
+                                <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+                                <div class="skill-details">
+                                    <div class="skill-top">
+                                        <span class="skill-name">Intelligence</span>
+                                        <span class="skill-val" id="intelligence">10</span>
+                                    </div>
+                                    <div class="skill-sp-bar-bg">
+                                        <div class="skill-sp-bar-fill" id="bar-sp-intelligence" style="width: 0%"></div>
+                                    </div>
+                                    <div class="skill-sub">SP: <span id="sp-intelligence">0</span></div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div style="margin-top: 10px; text-align: center; color: var(--text-muted); font-size: 0.8rem;">
-                        Current Trend: <span style="color: var(--accent-color)">+15%</span> this week
+
+                    <!-- Mini Chart -->
+                    <div class="glass-panel chart-container" style="margin-top: var(--spacing-md); padding: 0;">
+                        <!-- Header -->
+                        <div class="chart-header">
+                            <h2 class="chart-title"><i class="fa-solid fa-chart-line"></i> EXPERIENCE GAIN</h2>
+                            <div class="sync-badge">SYNCING...</div>
+                        </div>
+                        
+                        <!-- Chart Body -->
+                        <div class="chart-body">
+                            <!-- Y-Axis -->
+                            <div class="y-axis">
+                                <span>1,200</span>
+                                <span>1,000</span>
+                                <span>800</span>
+                                <span>600</span>
+                                <span>400</span>
+                                <span>200</span>
+                                <span>0</span>
+                            </div>
+
+                            <!-- Main Graph Area -->
+                            <div class="graph-area">
+                                <!-- Grid Lines Background -->
+                                <div class="grid-lines">
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                    <div class="grid-line"></div>
+                                </div>
+
+                                <!-- SVG Graph -->
+                                <svg viewBox="0 0 700 300" class="main-chart-svg" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" class="chart-stop-top" />
+                                            <stop offset="100%" class="chart-stop-bottom" />
+                                        </linearGradient>
+                                    </defs>
+                                    <!-- Area Path -->
+                                    <path d="M0,250 C58,250 58,230 116,230 C174,230 174,180 233,180 C291,180 291,140 350,140 C408,140 408,130 466,130 C524,130 524,80 583,80 C641,80 641,20 700,20 L700,300 L0,300 Z" class="chart-area" fill="url(#chartFill)"/>
+                                    <!-- Line Path -->
+                                    <path d="M0,250 C58,250 58,230 116,230 C174,230 174,180 233,180 C291,180 291,140 350,140 C408,140 408,130 466,130 C524,130 524,80 583,80 C641,80 641,20 700,20" class="chart-line" />
+                                    
+                                    <!-- Data Points -->
+                                    <circle cx="0" cy="250" r="5" class="chart-dot" />
+                                    <circle cx="116" cy="230" r="5" class="chart-dot" />
+                                    <circle cx="233" cy="180" r="5" class="chart-dot" />
+                                    <circle cx="350" cy="140" r="5" class="chart-dot" />
+                                    <circle cx="466" cy="130" r="5" class="chart-dot" />
+                                    <circle cx="583" cy="80" r="5" class="chart-dot" />
+                                    <circle cx="700" cy="20" r="5" class="chart-dot" />
+                                </svg>
+
+                                <!-- X-Axis -->
+                                <div class="x-axis">
+                                    <span>Day 1</span>
+                                    <span>Day 2</span>
+                                    <span>Day 3</span>
+                                    <span>Day 4</span>
+                                    <span>Day 5</span>
+                                    <span>Day 6</span>
+                                    <span>Day 7</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
 
                 <!-- Active Quests / Side List -->

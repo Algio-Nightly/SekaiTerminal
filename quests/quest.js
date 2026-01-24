@@ -22,10 +22,17 @@ function loadQuests() {
 
 loadQuests();
 
-function displayQuests() {
+
+function displayQuests(filterText = "") {
     const questContainer = document.querySelector('.quest-container');
     questContainer.innerHTML = '';
-    Quests.forEach((quest) => {
+
+    // Filter quests based on title
+    const filteredQuests = Quests.filter(quest =>
+        quest.title.toLowerCase().includes(filterText.toLowerCase())
+    );
+
+    filteredQuests.forEach((quest) => {
         const questBox = document.createElement('div');
         questBox.classList.add('glass-panel', 'quest-box', 'quest-card');
         questBox.dataset.id = quest.id;
@@ -49,10 +56,8 @@ function displayQuests() {
                     <h3 class="section-title">Current Objectives</h3>
                     ${quest.objectives.map((objective) => `
                         <div class="objective-item">
-                            <div class="checkbox-box checkbox-checked">
-                                <i class="fa-solid fa-check" style="color: var(--accent-color); font-size: 0.8rem;"></i>
-                            </div>
-                            <span class="objective-text objective-done">${objective}</span>
+                            <input type="checkbox" name="objective" id="objective-${quest.id}-${objective.replace(/\s+/g, '')}"> 
+                            <label for="objective-${quest.id}-${objective.replace(/\s+/g, '')}"><span class="objective-text objective-done">${objective}</span></label>
                         </div>
                     `).join('')}
                 </div>
@@ -64,8 +69,8 @@ function displayQuests() {
                                 <span class="reward-xp-text">${quest.rewards.xp} XP</span>
                             </div>
                             ${Object.entries(quest.rewards.skillPoints || {})
-                            .filter(([key, value]) => value > 0)
-                            .map(([key, value]) => `
+                .filter(([key, value]) => value > 0)
+                .map(([key, value]) => `
                                 <div class="reward-pill reward-skill">
                                     <i class="fa-solid fa-circle-plus" style="color: var(--accent-secondary);"></i>
                                     <span class="reward-skill-text">${value} ${key}</span>
@@ -83,9 +88,33 @@ function displayQuests() {
         questContainer.appendChild(questBox);
     });
 }
-displayQuests()
-function addQuest() {
+displayQuests();
 
+// Search Functionality
+const searchInput = document.querySelector('.quest-search input');
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        displayQuests(e.target.value);
+    });
+}
+
+// Add Quest Window Toggle
+const addQuestBtn = document.querySelector('.btn-add-quest');
+const closeQuestBtn = document.querySelector('.btn-close-quest');
+const addQuestTerminal = document.querySelector('.quest-add-terminal');
+
+function toggleQuestWindow() {
+    if (addQuestTerminal) {
+        addQuestTerminal.classList.toggle('hidden');
+    }
+}
+
+if (addQuestBtn) {
+    addQuestBtn.addEventListener('click', toggleQuestWindow);
+}
+
+if (closeQuestBtn) {
+    closeQuestBtn.addEventListener('click', toggleQuestWindow);
 }
 
 statsSelector = ["Health", "Mana", "Stamina", "Strength", "Agility", "Intelligence"];
@@ -112,7 +141,7 @@ let questData = {
     }
 };
 function resetQuestData() {
-        let defaultData = {
+    let defaultData = {
         id: "",
         title: "",
         description: "",
@@ -132,7 +161,7 @@ function resetQuestData() {
         }
     };;
     return defaultData
-    
+
 }
 const addQuestForm = document.querySelector('.quest-add-terminal-form');
 
@@ -262,28 +291,50 @@ function removeStat(index) {
 document.addEventListener('click', (e) => {
     const abandonBtn = e.target.closest('.btn-abandon');
     const completeBtn = e.target.closest('.btn-complete');
-    
+
     if (!abandonBtn && !completeBtn) return;
-    const btn = abandonBtn || completeBtn; 
-    const questCard = btn.closest('.quest-card'); 
-    
+    const btn = abandonBtn || completeBtn;
+    const questCard = btn.closest('.quest-card');
+
     if (!questCard) {
         console.error("Could not find parent quest card");
         return;
     }
     const questId = questCard.dataset.id;
+    console.log("Interact Quest ID:", questId);
+
+    // Find the actual quest object before removing it (CRITICAL FIX)
+    // Use loose equality == to match string ID with potentially number ID
+    const completedQuest = Quests.find(q => q.id == questId);
+
     if (abandonBtn) {
-        Quests = Quests.filter(q => q.id !== questId);
+        Quests = Quests.filter(q => q.id != questId);
         showPopup("Quest abandoned.");
-    } 
+    }
     else if (completeBtn) {
-        Quests = Quests.filter(q => q.id !== questId);
-        showPopup("Quest completed! Rewards granted.");
-        // Add logic here to actually give the player the XP/Stats
+        if (completedQuest) {
+            try {
+                // Apply rewards to the persistent user object
+                console.log("Completing quest, rewards:", completedQuest.rewards);
+                if (typeof user !== 'undefined') {
+                    user.addQuestRewards(completedQuest.rewards);
+                    if (typeof saveUser === 'function') saveUser();
+                    showPopup(`Quest completed! +${completedQuest.rewards.xp} XP`);
+                } else {
+                    console.error("User object missing in quest.js scope");
+                    showPopup("Error: User profile not found.");
+                }
+            } catch (err) {
+                console.error("Error applying rewards:", err);
+                showPopup("Error: Failed to apply rewards.");
+            }
+        } else {
+            console.error("Quest data not found for id:", questId);
+            showPopup("Error: Quest data missing.");
+        }
+        Quests = Quests.filter(q => q.id != questId);
     }
     saveQuests();
-    displayQuests(); 
+    displayQuests();
 });
-
-
 

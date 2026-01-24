@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekai Terminal | Inventory</title>
+    <!-- Importing a nice font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="glass-panel glass-sidebar">
+            <div class="brand">
+                <i class="fa-solid fa-dragon"></i> SYSTEM
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item" onclick="window.location.href='../index.html'">
+                    <i class="fa-solid fa-layer-group"></i> <span>Status</span>
+                </li>
+                <li class="nav-item" onclick="window.location.href='../skills/skills.html'">
+                    <i class="fa-solid fa-network-wired"></i> <span>Skill Tree</span>
+                </li>
+                <li class="nav-item active">
+                    <i class="fa-solid fa-box-open"></i> <span>Inventory</span>
+                </li>
+                <li class="nav-item" onclick="window.location.href='../quests/quest.html'">
+                    <i class="fa-solid fa-scroll"></i> <span>Quests</span>
+                </li>
+                <li class="nav-item" onclick="window.location.href='../settings/settings.html'">
+                    <i class="fa-solid fa-gear"></i> <span>Settings</span>
+                </li>
+            </ul>
+            <div class="theme-toggle-container">
+                <button class="theme-btn active" onclick="setTheme('dark')">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="theme-btn" onclick="setTheme('light')">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        
+        <main class="main-content">
+
+            <div class="glass-panel skills-panel" style="width: 100%; height: 100%;">
+            </div>
+        </main>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
