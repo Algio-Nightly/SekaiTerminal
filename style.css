@@ -531,10 +531,10 @@ h2.panel-title {
     font-size: 4rem;
     font-weight: 800;
     line-height: 1;
-    background: linear-gradient(to bottom, #fff, var(--text-muted));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ffffff;
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+    text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
 }
 
 .xp-container {
@@ -702,6 +702,30 @@ h2.panel-title {
 
 .accent-gold-bg {
     background: var(--accent-tertiary) !important;
+}
+
+.accent-green {
+    color: #00ff88 !important;
+}
+
+.accent-green-bg {
+    background: #00ff88 !important;
+}
+
+.accent-purple {
+    color: #b400ff !important;
+}
+
+.accent-purple-bg {
+    background: #b400ff !important;
+}
+
+.accent-orange {
+    color: #ff9900 !important;
+}
+
+.accent-orange-bg {
+    background: #ff9900 !important;
 }
 
 /* --- Chart Fix --- */

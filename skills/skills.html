@@ -81,8 +81,73 @@
 
                     <div class="glass-panel hidden skill-add-panel" id="add-skill-panel">
                         <h2 class="panel-title panel-title-centered-sm">Add Skill</h2>
+                        
+                        <!-- Parent Selection -->
+                        <div style="margin-bottom: 10px; text-align: center;">
+                            <label style="color: #aaa; font-size: 0.9em;">Parents:</label>
+                            <div id="parent-list-display" style="min-height: 20px; color: var(--accent-color); font-weight: bold; margin-bottom: 5px;">None</div>
+                            <button id="toggle-parent-select-btn" class="btn glass-button" style="font-size: 0.8rem; padding: 4px 10px; width: auto;">Select Parents</button>
+                            <div id="selection-mode-indicator" class="hidden" style="color: yellow; font-size: 0.8rem; margin-top: 2px;">Selection Mode Active</div>
+                        </div>
+
+                        <!-- Base Node Toggle (Visible only if no parents) -->
+                        <div id="base-node-option" class="hidden" style="margin-bottom: 10px; text-align: center;">
+                            <label style="color: var(--accent-secondary); font-weight: bold; cursor: pointer;">
+                                <input type="checkbox" id="is-base-node-check"> Is Base Node?
+                            </label>
+                        </div>
+
                         <input type="text" id="new-skill-input" placeholder="Skill Name" class="glass-input skill-input">
-                        <button id="create-skill-btn" class="btn btn-primary">Create</button>
+                        
+                        <!-- Shape Select -->
+                        <select id="new-skill-shape" class="glass-input skill-input" style="margin-top: 10px; background: var(--glass-bg); color: white;">
+                            <option value="circle">Normal Skill (Circle)</option>
+                            <option value="diamond">Unique Skill (Diamond)</option>
+                            <option value="triangle">Branch Skill (Triangle)</option>
+                            <option value="hexagon">Boss Project (Hexagon)</option>
+                        </select>
+
+                        <!-- Rank (Color) Select -->
+                        <select id="new-skill-color" class="glass-input skill-input" style="margin-top: 10px;">
+                            <option value="normal">Normal (White)</option>
+                            <option value="uncommon">Uncommon (Aqua)</option>
+                            <option value="rare">Rare (Green)</option>
+                            <option value="epic">Epic (Red)</option>
+                            <option value="legendary">Legendary (Gold)</option>
+                            <option value="mythic">Mythic (Purple)</option>
+                        </select>
+
+                        <!-- Size Slider -->
+                        <div class="custom-slider" style="margin-top: 15px;">
+                            <label for="new-skill-size">Size: <span id="new-skill-size-value" style="color: var(--accent-color);">20</span></label>
+                            <input type="range" id="new-skill-size" min="10" max="50" value="20">
+                        </div>
+
+                        <button id="create-skill-btn" class="btn btn-primary" style="margin-top: 10px;">Create</button>
+                    </div>
+
+                    <!-- Skill Tree Legend -->
+                    <div class="glass-panel skill-legend">
+                        <div class="legend-section">
+                            <h4 class="legend-title">Ranks</h4>
+                            <div class="legend-grid">
+                                <div class="legend-item"><span class="legend-dot rank-normal"></span> Normal</div>
+                                <div class="legend-item"><span class="legend-dot rank-uncommon"></span> Uncommon</div>
+                                <div class="legend-item"><span class="legend-dot rank-rare"></span> Rare</div>
+                                <div class="legend-item"><span class="legend-dot rank-epic"></span> Epic</div>
+                                <div class="legend-item"><span class="legend-dot rank-legendary"></span> Legendary</div>
+                                <div class="legend-item"><span class="legend-dot rank-mythic"></span> Mythic</div>
+                            </div>
+                        </div>
+                        <div class="legend-section">
+                            <h4 class="legend-title">Types</h4>
+                            <div class="legend-grid">
+                                <div class="legend-item"><span class="legend-shape shape-circle"></span> Normal Skill</div>
+                                <div class="legend-item"><span class="legend-shape shape-diamond"></span> Unique Skill</div>
+                                <div class="legend-item"><span class="legend-shape shape-triangle"></span> Branch Skill</div>
+                                <div class="legend-item"><span class="legend-shape shape-hexagon"></span> Boss Project</div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>

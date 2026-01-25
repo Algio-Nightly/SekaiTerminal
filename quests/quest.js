@@ -117,7 +117,7 @@ if (closeQuestBtn) {
     closeQuestBtn.addEventListener('click', toggleQuestWindow);
 }
 
-statsSelector = ["Health", "Mana", "Stamina", "Strength", "Agility", "Intelligence"];
+statsSelector = ["Health", "Knowledge", "Stamina", "Strength", "Dexterity", "Intelligence"];
 
 // --- STATE MANAGEMENT ---
 
@@ -132,10 +132,10 @@ let questData = {
         xp: 0,
         skillPoints: {
             Health: 0,
-            Mana: 0,
+            Knowledge: 0,
             Stamina: 0,
             Strength: 0,
-            Agility: 0,
+            Dexterity: 0,
             Intelligence: 0
         }
     }
@@ -152,10 +152,10 @@ function resetQuestData() {
             xp: 0,
             skillPoints: {
                 Health: 0,
-                Mana: 0,
+                Knowledge: 0,
                 Stamina: 0,
                 Strength: 0,
-                Agility: 0,
+                Dexterity: 0,
                 Intelligence: 0
             }
         }
@@ -223,10 +223,10 @@ function removeObjective(index) {
 
 const availableStats = [
     "Health",
-    "Mana",
+    "Knowledge",
     "Stamina",
     "Strength",
-    "Agility",
+    "Dexterity",
     "Intelligence"
 ];
 

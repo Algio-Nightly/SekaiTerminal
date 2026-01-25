@@ -96,18 +96,20 @@
                                 </div>
                             </div>
 
-                            <!-- Mana -->
+                            <!-- Knowledge -->
                             <div class="skill-row">
-                                <div class="skill-icon accent-blue"><i class="fa-solid fa-bolt"></i></div>
+                                <div class="skill-icon accent-blue">
+                                    <i class="fa-solid fa-book"></i>
+                                </div>
                                 <div class="skill-details">
                                     <div class="skill-top">
-                                        <span class="skill-name">Mana</span>
-                                        <span class="skill-val" id="mana">100</span>
+                                        <span class="skill-name">Knowledge</span>
+                                        <span class="skill-val" id="knowledge">100</span>
                                     </div>
                                     <div class="skill-sp-bar-bg">
-                                        <div class="skill-sp-bar-fill accent-blue-bg" id="bar-sp-mana" style="width: 0%"></div>
+                                        <div class="skill-sp-bar-fill accent-blue-bg" id="bar-sp-knowledge" style="width: 0%"></div>
                                     </div>
-                                    <div class="skill-sub">SP: <span id="sp-mana">0</span></div>
+                                    <div class="skill-sub">SP: <span id="sp-knowledge">0</span></div>
                                 </div>
                             </div>
 
@@ -128,44 +130,50 @@
 
                             <!-- Strength -->
                             <div class="skill-row">
-                                <div class="skill-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                                <div class="skill-icon accent-orange">
+                                    <i class="fa-solid fa-dumbbell"></i>
+                                </div>
                                 <div class="skill-details">
                                     <div class="skill-top">
                                         <span class="skill-name">Strength</span>
                                         <span class="skill-val" id="strength">10</span>
                                     </div>
                                     <div class="skill-sp-bar-bg">
-                                        <div class="skill-sp-bar-fill" id="bar-sp-strength" style="width: 0%"></div>
+                                        <div class="skill-sp-bar-fill accent-orange-bg" id="bar-sp-strength" style="width: 0%"></div>
                                     </div>
                                     <div class="skill-sub">SP: <span id="sp-strength">0</span></div>
                                 </div>
                             </div>
 
-                            <!-- Agility -->
+                            <!-- Dexterity -->
                             <div class="skill-row">
-                                <div class="skill-icon"><i class="fa-solid fa-wind"></i></div>
+                                <div class="skill-icon accent-green">
+                                    <i class="fa-solid fa-wind"></i>
+                                </div>
                                 <div class="skill-details">
                                     <div class="skill-top">
-                                        <span class="skill-name">Agility</span>
-                                        <span class="skill-val" id="agility">10</span>
+                                        <span class="skill-name">Dexterity</span>
+                                        <span class="skill-val" id="dexterity">10</span>
                                     </div>
                                     <div class="skill-sp-bar-bg">
-                                        <div class="skill-sp-bar-fill" id="bar-sp-agility" style="width: 0%"></div>
+                                        <div class="skill-sp-bar-fill accent-green-bg" id="bar-sp-dexterity" style="width: 0%"></div>
                                     </div>
-                                    <div class="skill-sub">SP: <span id="sp-agility">0</span></div>
+                                    <div class="skill-sub">SP: <span id="sp-dexterity">0</span></div>
                                 </div>
                             </div>
 
                             <!-- Intelligence -->
                             <div class="skill-row">
-                                <div class="skill-icon"><i class="fa-solid fa-brain"></i></div>
+                                <div class="skill-icon accent-purple">
+                                    <i class="fa-solid fa-brain"></i>
+                                </div>
                                 <div class="skill-details">
                                     <div class="skill-top">
                                         <span class="skill-name">Intelligence</span>
                                         <span class="skill-val" id="intelligence">10</span>
                                     </div>
                                     <div class="skill-sp-bar-bg">
-                                        <div class="skill-sp-bar-fill" id="bar-sp-intelligence" style="width: 0%"></div>
+                                        <div class="skill-sp-bar-fill accent-purple-bg" id="bar-sp-intelligence" style="width: 0%"></div>
                                     </div>
                                     <div class="skill-sub">SP: <span id="sp-intelligence">0</span></div>
                                 </div>
@@ -250,38 +258,8 @@
                 <!-- Active Quests / Side List -->
                 <div class="glass-panel list-container">
                     <h2 class="panel-title">Active Quests</h2>
-                    
-                    <div class="list-item">
-                        <div class="list-item-icon" style="color: #ff0055;">
-                            <i class="fa-solid fa-skull"></i>
-                        </div>
-                        <div class="list-item-content">
-                            <h4>Defeat the Bug Lord</h4>
-                            <p>Fix critical issues in production</p>
-                        </div>
-                        <button class="btn btn-glass" style="padding: 5px 10px; font-size: 0.7rem;">Active</button>
-                    </div>
-
-                    <div class="list-item">
-                        <div class="list-item-icon" style="color: #ebd234;">
-                            <i class="fa-solid fa-book"></i>
-                        </div>
-                        <div class="list-item-content">
-                            <h4>Knowledge Absorption</h4>
-                            <p>Read 3 chapters of "Clean Code"</p>
-                        </div>
-                        <button class="btn btn-glass" style="padding: 5px 10px; font-size: 0.7rem;">Active</button>
-                    </div>
-
-                     <div class="list-item">
-                        <div class="list-item-icon" style="color: #00f3ff;">
-                            <i class="fa-solid fa-droplet"></i>
-                        </div>
-                        <div class="list-item-content">
-                            <h4>Daily Maintenance</h4>
-                            <p>Drink 2L of water</p>
-                        </div>
-                         <button class="btn btn-primary" style="padding: 5px 10px; font-size: 0.7rem;">Done</button>
+                    <div id="active-quests-list">
+                        <!-- Quests will be injected here -->
                     </div>
                     
                     <div style="margin-top: auto; padding-top: 15px;">

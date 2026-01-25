@@ -13,17 +13,17 @@ class User {
         this.xp = 0;
         this.level = 1;
         this.Health = 100;
-        this.Mana = 100;
+        this.Knowledge = 100;
         this.Stamina = 100;
         this.Strength = 10;
-        this.Agility = 10;
+        this.Dexterity = 10;
         this.Intelligence = 10;
         this.skillPoints = {
             Health: 0,
-            Mana: 0,
+            Knowledge: 0,
             Stamina: 0,
             Strength: 0,
-            Agility: 0,
+            Dexterity: 0,
             Intelligence: 0
         }
     }
@@ -34,10 +34,10 @@ class User {
 
         if (rewards.skillPoints) {
             this.skillPoints.Health += Number(rewards.skillPoints.Health) || 0;
-            this.skillPoints.Mana += Number(rewards.skillPoints.Mana) || 0;
+            this.skillPoints.Knowledge += Number(rewards.skillPoints.Knowledge) || 0;
             this.skillPoints.Stamina += Number(rewards.skillPoints.Stamina) || 0;
             this.skillPoints.Strength += Number(rewards.skillPoints.Strength) || 0;
-            this.skillPoints.Agility += Number(rewards.skillPoints.Agility) || 0;
+            this.skillPoints.Dexterity += Number(rewards.skillPoints.Dexterity) || 0;
             this.skillPoints.Intelligence += Number(rewards.skillPoints.Intelligence) || 0;
         }
         this.checkLevelUp();
@@ -206,8 +206,8 @@ function updateDashboardStats() {
     if (xpBarEl) xpBarEl.style.width = `${xpPercentage}%`;
 
     // 2. Stats & SP
-    const stats = ['Health', 'Mana', 'Stamina', 'Strength', 'Agility', 'Intelligence'];
-    const statIds = ['health', 'mana', 'stamina', 'strength', 'agility', 'intelligence'];
+    const stats = ['Health', 'Knowledge', 'Stamina', 'Strength', 'Dexterity', 'Intelligence'];
+    const statIds = ['health', 'knowledge', 'stamina', 'strength', 'dexterity', 'intelligence'];
 
     stats.forEach((stat, index) => {
         const id = statIds[index];
@@ -233,3 +233,49 @@ function updateDashboardStats() {
 
 // Initial update
 updateDashboardStats();
+
+function renderActiveQuests() {
+    const listContainer = document.getElementById('active-quests-list');
+    if (!listContainer) return;
+
+    const quests = JSON.parse(localStorage.getItem('Quests')) || [];
+    listContainer.innerHTML = '';
+
+    if (quests.length === 0) {
+        listContainer.innerHTML = `<div style="padding: 10px; color: var(--text-muted); text-align: center;">No active quests.</div>`;
+        return;
+    }
+
+    // Show top 3 quests
+    quests.slice(0, 3).forEach(quest => {
+        // Determine Icon based on First Skill Point Reward
+        let iconClass = 'fa-scroll';
+        let bgClass = 'accent-blue-bg'; // Default
+
+        if (quest.rewards && quest.rewards.skillPoints) {
+            const sp = quest.rewards.skillPoints;
+            // Check keys with value > 0
+            if (sp.Strength > 0) { iconClass = 'fa-dumbbell'; bgClass = 'accent-orange-bg'; }
+            else if (sp.Knowledge > 0) { iconClass = 'fa-book'; bgClass = 'accent-blue-bg'; }
+            else if (sp.Dexterity > 0) { iconClass = 'fa-wind'; bgClass = 'accent-green-bg'; }
+            else if (sp.Intelligence > 0) { iconClass = 'fa-brain'; bgClass = 'accent-purple-bg'; }
+            else if (sp.Health > 0) { iconClass = 'fa-heart'; bgClass = 'accent-red-bg'; }
+            else if (sp.Stamina > 0) { iconClass = 'fa-person-running'; bgClass = 'accent-gold-bg'; }
+        }
+
+        const item = document.createElement('div');
+        item.className = 'list-item';
+        item.innerHTML = `
+            <div class="list-item-icon ${bgClass}" style="color: white;">
+                 <i class="fa-solid ${iconClass}"></i>
+            </div>
+             <div class="list-item-content">
+                 <h4>${quest.title}</h4>
+                 <p>${quest.description || 'No description'}</p>
+             </div>
+             <span class="btn btn-glass" style="font-size: 0.7rem; padding: 5px 10px;">Active</span>
+        `;
+        listContainer.appendChild(item);
+    });
+}
+renderActiveQuests();

@@ -59,6 +59,7 @@
     border-radius: var(--radius-sm);
     padding: 6px;
 }
+
 .skill-control-panel button {
     margin: 10px 0px;
 }
@@ -95,10 +96,256 @@
     border-radius: 4px;
     border: 1px solid var(--glass-border);
     background: var(--glass-bg);
-    color: white;
+    color: var(--text-main);
+    width: 100%;
 }
+
+.skill-input option {
+    background: var(--bg-color);
+    color: var(--text-main);
+}
+
 #selected-skill {
     color: aqua;
     text-shadow: 0px 0px 5px aqua;
     font-weight: bold;
+}
+
+/* Slider Styling */
+.custom-slider {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 15px;
+    /* Increased gap */
+    padding: 0 5px;
+    /* Add internal padding */
+    margin-top: 15px;
+    align-items: center;
+    box-sizing: border-box;
+    /* Ensure padding is included */
+}
+
+.custom-slider label {
+    display: block;
+    margin-bottom: 0;
+    color: var(--text-muted);
+    white-space: nowrap;
+    min-width: 60px;
+    /* Fixed width for label to prevent jumping */
+}
+
+.custom-slider input {
+    flex: 1;
+    /* Allow input to take remaining space instead of fixed percentage that might overflow */
+    min-width: 0;
+    /* Flexbox overflow fix */
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    /* Slightly thinner */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    outline: none;
+    padding: 0;
+    border: none;
+}
+
+.custom-slider input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--accent-color);
+    transition: transform 0.1s;
+}
+
+.custom-slider input::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.custom-slider input::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Base Node Toggle Styling */
+#base-node-option label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-main);
+    /* Changed from warning red to main text */
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#is-base-node-check {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--accent-color);
+    /* Cyan border */
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#is-base-node-check:checked {
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Legend Styling */
+.skill-legend {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: auto;
+    max-width: 300px;
+    padding: 15px;
+    pointer-events: auto;
+    display: flex;
+    gap: 20px;
+    font-size: 0.8rem;
+}
+
+.legend-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.legend-title {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.legend-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+}
+
+/* Rank Dots */
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 5px currentColor;
+}
+
+.rank-normal {
+    background: #e2e8f0;
+    box-shadow: 0 0 5px #e2e8f0;
+}
+
+.rank-uncommon {
+    background: #00f2ff;
+    box-shadow: 0 0 5px #00f2ff;
+}
+
+.rank-rare {
+    background: #00ff88;
+    box-shadow: 0 0 5px #00ff88;
+}
+
+.rank-epic {
+    background: #ff0055;
+    box-shadow: 0 0 5px #ff0055;
+}
+
+.rank-legendary {
+    background: #ffd700;
+    box-shadow: 0 0 5px #ffd700;
+}
+
+.rank-mythic {
+    background: #b400ff;
+    box-shadow: 0 0 5px #b400ff;
+}
+
+/* Shape Markers */
+.legend-shape {
+    width: 12px;
+    height: 12px;
+    background: var(--text-muted);
+    display: inline-block;
+}
+
+.shape-circle {
+    border-radius: 50%;
+}
+
+.shape-diamond {
+    transform: rotate(45deg);
+    width: 10px;
+    height: 10px;
+}
+
+.shape-triangle {
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid var(--text-muted);
+}
+
+.shape-hexagon {
+    width: 10px;
+    height: 6px;
+    background: var(--text-muted);
+    position: relative;
+    margin: 3px 0;
+}
+
+.shape-hexagon:before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 3px solid var(--text-muted);
+}
+
+.shape-hexagon:after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 3px solid var(--text-muted);
 }
