@@ -67,11 +67,24 @@ function calculateAndRenderStats() {
     console.log("Inventory: Reconstructed Parent Map", parentMap);
 
     // 3. Propagation Logic
-    nodes.forEach(node => {
-        // XP Value: 20 per node (Tier 1 approx)
-        const nodeBaseXP = 20;
 
-        // Propagate this 20 XP upwards
+    // XP Values per Rank
+    const XP_TABLE = {
+        'normal': 5,
+        'uncommon': 10,
+        'rare': 15,
+        'epic': 20,
+        'legendary': 25,
+        'mythic': 30
+    };
+
+    nodes.forEach(node => {
+        // Dynamic XP based on Rank
+        // Default to 'normal' (5) if rank is missing (legacy nodes)
+        const rankKey = node.rank || 'normal';
+        const nodeBaseXP = XP_TABLE[rankKey] || 5;
+
+        // Propagate this XP upwards
         propagateXP(node.id, nodeBaseXP, [], edges, baseNodeStats, parentMap);
     });
 

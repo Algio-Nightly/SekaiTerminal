@@ -409,7 +409,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 font: { color: 'white' }, // Force white font for visibility
                 children: [],
                 isBaseNode: isBase,
-                shadow: finalShadow
+                shadow: finalShadow,
+                rank: colorKey // Save the Rank ID (e.g., 'epic', 'rare')
             };
 
             // Add to dataset
