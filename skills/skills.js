@@ -358,6 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const createSkillBtn = document.querySelector('#create-skill-btn');
     if (createSkillBtn) {
         createSkillBtn.addEventListener('click', () => {
+            console.log("Create Skill Button Clicked");
             const nameInput = document.querySelector('#new-skill-input');
             const shapeSelect = document.querySelector('#new-skill-shape');
             const colorSelect = document.querySelector('#new-skill-color');
@@ -380,57 +381,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Base Node Override
             let isBase = false;
-            let nodeProps = { color: 'white', borderColor: colorStyle.border }; // Default font props
+            let finalShape = shape;
+            let finalSize = size;
+            let finalColor = colorStyle;
+            let finalShadow = options.nodes.shadow; // Default shadow
 
             if (isBaseCheck && isBaseCheck.checked && selectedParentIds.size === 0) {
                 // Apply Base Node Styles
                 isBase = true;
-                colorStyle = BASE_NODE_STYLE.color;
-                // Override Shape and Size if desired via code, or let user pick?
-                // User said "automatically get this customizations". So we overwrite.
-                // We'll treat the inputs as ignored or just force the properties.
-                // Actually, let's just force the visual properties defined in BASE_NODE_STYLE.
-                // Shape: Hexagon, Size: 32.
-                // Wait, if I change shape variable here it won't affect new SkillNode constructor unless I pass it.
+                finalShape = BASE_NODE_STYLE.shape;
+                finalSize = BASE_NODE_STYLE.size;
+                finalColor = BASE_NODE_STYLE.color;
+                finalShadow = BASE_NODE_STYLE.shadow;
             }
-
-            // Refined Construction
-            const finalShape = isBase ? BASE_NODE_STYLE.shape : shape;
-            const finalSize = isBase ? BASE_NODE_STYLE.size : size;
-            const finalColor = isBase ? BASE_NODE_STYLE.color : colorStyle;
-            const finalShadow = isBase ? BASE_NODE_STYLE.shadow : options.nodes.shadow; // Fallback to default options if undefined, but SkillNode doesn't take shadow arg directly? 
-            // SkillNode constructor: constructor(id, label, shape, size, color, font, children = [], isBaseNode = false)
-            // It doesn't take 'shadow'. I need to update SkillNode or pass it in 'options' logic?
-            // Better: Update SkillNode to merge generic options.
-
-            // NOTE: SkillNode class definition needs update to support 'shadow' per node if we want specific glow.
-            // Or we just return a plain object instead of a class instance? No, class is fine but needs field.
-
-            // Let's just create the object then update it? Or update constructor.
-            // I'll update constructor in next step if checking this logic flow.
-
-            // For now, let's assume we can pass `shadow` in the color object? No, shadow is sibling to color.
-            // Vis Node: { id, label, ..., shadow: {...} }
-
-            // Let's create a raw object to pass to nodes.add() for full control, or update constructor.
-            // Updating constructor is cleaner.
 
             // Generate ID
             const allIds = nodes.getIds();
             const newId = allIds.length > 0 ? Math.max(...allIds) + 1 : 1;
 
-            // ... halting code replacement to fix SkillNode constructor in separate step ...
-
-            // Resuming logic assuming constructor will be fixed or object used.
-            // Let's use the Class but extend it to support dynamic props assignment?
-            // Or just:
+            // Construct New Node Object
             const newNode = {
                 id: newId,
                 label: name,
                 shape: finalShape,
                 size: finalSize,
                 color: finalColor,
-                font: { color: 'white' },
+                font: { color: 'white' }, // Force white font for visibility
                 children: [],
                 isBaseNode: isBase,
                 shadow: finalShadow
@@ -439,6 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add to dataset
             try {
                 nodes.add(newNode);
+                console.log("Node added:", newNode);
 
                 // Update Parents
                 if (selectedParentIds.size > 0) {
@@ -452,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                // Reconstruct Edges
+                // Reconstruct Edges & Save
                 reconstructEdges();
                 saveSkillTree();
 
@@ -461,9 +438,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isBaseCheck) isBaseCheck.checked = false;
                 addSkillPanel.classList.add('hidden');
                 isSelectionMode = false;
+                selectedParentIds.clear();
+                updateSelectionModeUI();
 
             } catch (err) {
                 console.error("Error adding node:", err);
+                alert("Error adding node. Check console.");
             }
         });
     }
