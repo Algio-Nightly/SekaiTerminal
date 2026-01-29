@@ -57,9 +57,10 @@ function displayQuests(filterText = "") {
                     ${quest.objectives.map((objective) => `
                         <div class="objective-item">
                             <input type="checkbox" name="objective" id="objective-${quest.id}-${objective.replace(/\s+/g, '')}"> 
-                            <label for="objective-${quest.id}-${objective.replace(/\s+/g, '')}"><span class="objective-text objective-done">${objective}</span></label>
+                            <label for="objective-${quest.id}-${objective.replace(/\s+/g, '')}"><span class="objective-text">${objective}</span></label>
                         </div>
                     `).join('')}
+                    
                 </div>
                 <div class="quest-rewards">
                         <h3 class="section-title">Rewards</h3>
