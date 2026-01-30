@@ -1,6 +1,6 @@
 # Sekai Terminal // LifeOS
 
-**System Access Point:** [Insert GitHub Pages Link Here]
+**System Access Point:** https://algio-nightly.github.io/SekaiTerminal/
 
 ## System Overview
 
